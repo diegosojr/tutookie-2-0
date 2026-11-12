@@ -10,6 +10,7 @@ import './styles/components.css'
 import './styles/forms.css'
 import './styles/home.css'
 import './styles/catalog.css'
+import './styles/product.css'
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(

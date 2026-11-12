@@ -1,0 +1,92 @@
+/* PÁGINA DE PRODUTO — foto, informações, preço e disponibilidade. */
+
+.product-detail {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.product-detail__media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-gray-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.product-detail__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-detail__placeholder {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  color: #5b5d66;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.product-detail__category {
+  margin: 0 0 var(--space-2);
+  color: var(--color-orange-strong);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Etiqueta usada fora do card (não fica sobre a imagem) */
+.badge--inline {
+  position: static;
+  display: inline-block;
+  margin-bottom: var(--space-3);
+}
+
+.product-detail__price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+  color: var(--color-chocolate);
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.product-detail__price s {
+  color: #6b6d76;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+.discount-pill {
+  padding: 0.15rem 0.65rem;
+  background: var(--color-chocolate);
+  border-radius: var(--radius-pill);
+  color: var(--color-cream);
+  font-size: 0.875rem;
+}
+
+.product-detail__availability {
+  margin: 0 0 var(--space-4);
+  color: #1d6b3a;
+  font-weight: 700;
+}
+
+.product-detail__availability--no {
+  color: #7a2e1d;
+}
+
+.product-detail__actions {
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 48rem) {
+  .product-detail {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: var(--space-12);
+  }
+}
