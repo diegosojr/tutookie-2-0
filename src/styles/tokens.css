@@ -1,0 +1,40 @@
+/* TOKENS DE DESIGN — cores, fontes e medidas da Tutookie 2.0.
+   Para mudar o visual do site inteiro, altere os valores aqui. */
+:root {
+  /* Cores da marca */
+  --color-orange: #c87938;
+  --color-orange-strong: #8f4f14; /* versão escura do laranja, boa para texto */
+  --color-chocolate: #48301c;
+  --color-cream: #fff8f0;
+  --color-gray-light: #f2f3f5;
+  --color-text: #24252b;
+  --color-white: #ffffff;
+  --color-border: #e6d9cb;
+
+  /* Tipografia */
+  --font-display: 'Fraunces Variable', Georgia, serif;
+  --font-body: 'DM Sans Variable', system-ui, sans-serif;
+
+  /* Espaçamentos */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Bordas e sombras */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(72, 48, 28, 0.08);
+  --shadow-md: 0 8px 24px rgba(72, 48, 28, 0.12);
+
+  /* Medidas do layout */
+  --container: 72rem;
+  --header-height: 4rem;
+  --tabbar-height: 3.5rem;
+}

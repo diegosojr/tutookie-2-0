@@ -1,0 +1,146 @@
+/* LAYOUT — cabeçalho, barra inferior (mobile), conteúdo e rodapé. */
+
+/* ---------- Cabeçalho ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--color-cream);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: var(--header-height);
+}
+
+/* Espaço reservado da logomarca (será trocado pelo arquivo original) */
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-chocolate);
+  text-decoration: none;
+}
+
+/* Menu do topo: escondido no celular */
+.main-nav {
+  display: none;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-nav a {
+  padding: var(--space-2) 0;
+  color: var(--color-chocolate);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.main-nav a:hover {
+  border-bottom-color: var(--color-orange);
+}
+
+.main-nav a.active {
+  font-weight: 700;
+  border-bottom-color: var(--color-orange);
+}
+
+/* ---------- Conteúdo principal ---------- */
+.site-main {
+  min-height: 60vh;
+  padding-block: var(--space-8);
+}
+
+.site-main:focus {
+  outline: none;
+}
+
+/* ---------- Barra inferior (somente celular) ---------- */
+.tabbar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  background: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.tabbar ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tabbar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tabbar-height);
+  padding: var(--space-2);
+  font-size: 0.8125rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.tabbar a.active {
+  font-weight: 700;
+  color: var(--color-chocolate);
+  box-shadow: inset 0 3px 0 var(--color-orange);
+}
+
+/* Espaço para a barra inferior não cobrir o rodapé */
+body {
+  padding-bottom: calc(var(--tabbar-height) + env(safe-area-inset-bottom));
+}
+
+/* ---------- Rodapé ---------- */
+.site-footer {
+  margin-top: var(--space-16);
+  padding-block: var(--space-8);
+  background: var(--color-chocolate);
+  color: var(--color-cream);
+}
+
+.site-footer p {
+  margin: 0 0 var(--space-2);
+}
+
+.site-footer__brand {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.site-footer :focus-visible {
+  outline-color: var(--color-cream);
+}
+
+/* ---------- Telas maiores (tablet e computador) ---------- */
+@media (min-width: 48rem) {
+  .main-nav {
+    display: block;
+  }
+
+  .tabbar {
+    display: none;
+  }
+
+  body {
+    padding-bottom: 0;
+  }
+}

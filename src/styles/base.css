@@ -1,0 +1,90 @@
+/* BASE — reset, tipografia, foco visível e utilitários globais. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-cream);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  color: var(--color-chocolate);
+  line-height: 1.15;
+  margin: 0 0 var(--space-4);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+}
+
+p {
+  margin: 0 0 var(--space-4);
+}
+
+a {
+  color: var(--color-orange-strong);
+  text-underline-offset: 0.2em;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Foco visível para navegação por teclado (tecla Tab) */
+:focus-visible {
+  outline: 3px solid var(--color-chocolate);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Largura máxima e margens laterais do conteúdo */
+.container {
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+}
+
+/* Link "Pular para o conteúdo": só aparece quando recebe foco pelo teclado */
+.skip-link {
+  position: absolute;
+  top: -5rem;
+  left: var(--space-4);
+  z-index: 100;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-chocolate);
+  color: var(--color-cream);
+  border-radius: var(--radius-sm);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+.skip-link:focus-visible {
+  outline-color: var(--color-orange);
+}
+
+/* Respeita quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
