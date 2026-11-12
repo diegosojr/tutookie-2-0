@@ -28,6 +28,9 @@ function AdminLayout() {
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/admin/produtos">Produtos</NavLink>
+              </li>
+              <li>
                 <Link to="/">Ver loja</Link>
               </li>
             </ul>

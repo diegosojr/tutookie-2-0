@@ -10,6 +10,8 @@ import LoginPage from './pages/public/LoginPage.jsx'
 import AccessDeniedPage from './pages/public/AccessDeniedPage.jsx'
 import NotFoundPage from './pages/public/NotFoundPage.jsx'
 import AdminDashboardPage from './pages/admin/AdminDashboardPage.jsx'
+import AdminProductsPage from './pages/admin/AdminProductsPage.jsx'
+import AdminProductFormPage from './pages/admin/AdminProductFormPage.jsx'
 
 function App() {
   return (
@@ -29,6 +31,12 @@ function App() {
       <Route element={<ProtectedRoute requiredRole="admin" />}>
         <Route element={<AdminLayout />}>
           <Route path="/admin" element={<AdminDashboardPage />} />
+          <Route path="/admin/produtos" element={<AdminProductsPage />} />
+          <Route path="/admin/produtos/novo" element={<AdminProductFormPage />} />
+          <Route
+            path="/admin/produtos/:id/editar"
+            element={<AdminProductFormPage />}
+          />
         </Route>
       </Route>
     </Routes>

@@ -1,4 +1,4 @@
-/* PAINEL ADMINISTRATIVO — barra superior e área de conteúdo. */
+/* PAINEL ADMINISTRATIVO — barra superior, indicadores, tabela e diálogo. */
 
 .admin__bar {
   background: var(--color-chocolate);
@@ -61,6 +61,13 @@
   outline: none;
 }
 
+.admin__shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
 /* Botão claro, para usar sobre fundo marrom */
 .btn--light {
   background: var(--color-cream);
@@ -71,4 +78,194 @@
 .btn--light:hover {
   background: var(--color-white);
   border-color: var(--color-white);
+}
+
+/* Botão de ação destrutiva (excluir) */
+.btn--danger {
+  background: #8c1d18;
+  border-color: #8c1d18;
+  color: #ffffff;
+}
+
+.btn--danger:hover {
+  background: #6e1612;
+  border-color: #6e1612;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---------- Título da página com ação ---------- */
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.page-actions h1 {
+  margin: 0;
+}
+
+/* ---------- Mensagem de sucesso ---------- */
+.form-alert--success {
+  margin-bottom: var(--space-4);
+  background: #e8f5ec;
+  border-color: #1d6b3a;
+  color: #14502a;
+}
+
+/* ---------- Indicadores (cards de números) ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-6);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.stat__value {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-chocolate);
+}
+
+.stat__label {
+  color: #555760;
+  font-size: 0.9375rem;
+}
+
+/* ---------- Cartões do admin ---------- */
+.admin-card {
+  margin-top: var(--space-8);
+  padding: var(--space-6);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.admin-card h2 {
+  font-size: 1.25rem;
+}
+
+.admin-card .field--check {
+  margin-top: var(--space-3);
+}
+
+/* ---------- Tabela de produtos ---------- */
+.table-wrap {
+  overflow-x: auto;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.admin-table {
+  width: 100%;
+  min-width: 48rem;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.admin-table thead th {
+  background: var(--color-gray-light);
+  color: var(--color-chocolate);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+}
+
+.admin-table tbody tr:last-child th,
+.admin-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-table__name {
+  font-weight: 700;
+  color: var(--color-chocolate);
+}
+
+.admin-table__thumb {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: cover;
+  background: var(--color-gray-light);
+  border-radius: var(--radius-sm);
+  color: #5b5d66;
+}
+
+.admin-table__actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.status-tag {
+  display: inline-block;
+  padding: 0.15rem 0.65rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.status-tag--yes {
+  background: #e8f5ec;
+  color: #14502a;
+}
+
+.status-tag--no {
+  background: #fbeeea;
+  color: #7a2e1d;
+}
+
+/* ---------- Janela de confirmação ---------- */
+.dialog {
+  width: min(92vw, 28rem);
+  padding: var(--space-6);
+  background: var(--color-white);
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  color: var(--color-text);
+}
+
+.dialog::backdrop {
+  background: rgba(36, 37, 43, 0.55);
+}
+
+.dialog h2 {
+  font-size: 1.375rem;
+}
+
+.dialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
 }
