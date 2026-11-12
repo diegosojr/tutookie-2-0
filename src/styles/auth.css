@@ -1,0 +1,72 @@
+/* LOGIN E CARTÕES DE CONTA */
+
+.auth-card {
+  max-width: 30rem;
+  margin-inline: auto;
+  padding: var(--space-8);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.auth-form {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.auth-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+/* Aviso de erro do formulário */
+.form-alert {
+  padding: var(--space-3) var(--space-4);
+  background: #fdf0ee;
+  border: 1px solid #b3261e;
+  border-radius: var(--radius-sm);
+  color: #8c1d18;
+  font-weight: 500;
+}
+
+/* Caixa com as credenciais fictícias de demonstração */
+.demo-box {
+  margin-top: var(--space-8);
+  padding: var(--space-4);
+  background: var(--color-gray-light);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+}
+
+.demo-box h2 {
+  margin-bottom: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.demo-box p {
+  margin: 0 0 var(--space-2);
+}
+
+.demo-box code {
+  padding: 0.1rem 0.4rem;
+  background: var(--color-white);
+  border-radius: 4px;
+}
+
+.demo-box__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.btn--small {
+  min-height: 2.5rem;
+  padding: 0.3rem 1rem;
+  font-size: 0.875rem;
+}

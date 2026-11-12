@@ -11,12 +11,17 @@ import './styles/forms.css'
 import './styles/home.css'
 import './styles/catalog.css'
 import './styles/product.css'
+import './styles/auth.css'
+import './styles/admin.css'
+import { AuthProvider } from './contexts/AuthProvider.jsx'
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </BrowserRouter>
   </StrictMode>,
 )

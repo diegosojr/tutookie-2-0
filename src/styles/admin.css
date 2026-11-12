@@ -1,0 +1,74 @@
+/* PAINEL ADMINISTRATIVO — barra superior e área de conteúdo. */
+
+.admin__bar {
+  background: var(--color-chocolate);
+  color: var(--color-cream);
+}
+
+.admin__bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+  padding-block: var(--space-3);
+}
+
+.admin__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.admin__nav {
+  display: flex;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.admin__nav a {
+  padding: var(--space-2) 0;
+  color: var(--color-cream);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.admin__nav a:hover,
+.admin__nav a.active {
+  border-bottom-color: var(--color-orange);
+}
+
+.admin__user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 0.9375rem;
+}
+
+.admin__bar :focus-visible {
+  outline-color: var(--color-cream);
+}
+
+.admin__main {
+  min-height: 70vh;
+  padding-block: var(--space-8);
+}
+
+.admin__main:focus {
+  outline: none;
+}
+
+/* Botão claro, para usar sobre fundo marrom */
+.btn--light {
+  background: var(--color-cream);
+  border-color: var(--color-cream);
+  color: var(--color-chocolate);
+}
+
+.btn--light:hover {
+  background: var(--color-white);
+  border-color: var(--color-white);
+}
