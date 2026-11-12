@@ -5,7 +5,14 @@ const DEFAULT_TITLES = {
 }
 
 // Mensagem padrão para os estados de carregamento, erro e lista vazia.
-function StatusMessage({ type = 'empty', title, message, onRetry }) {
+// Se "onRetry" for informado, aparece um botão (texto em "actionLabel").
+function StatusMessage({
+  type = 'empty',
+  title,
+  message,
+  onRetry,
+  actionLabel = 'Tentar novamente',
+}) {
   return (
     <div
       className={`status status--${type}`}
@@ -18,7 +25,7 @@ function StatusMessage({ type = 'empty', title, message, onRetry }) {
       {message && <p className="status__message">{message}</p>}
       {onRetry && (
         <button type="button" className="btn btn--secondary" onClick={onRetry}>
-          Tentar novamente
+          {actionLabel}
         </button>
       )}
     </div>

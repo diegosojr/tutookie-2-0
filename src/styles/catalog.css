@@ -1,0 +1,87 @@
+/* CATÁLOGO — cabeçalho da página, filtros e paginação. */
+
+.page-header {
+  margin-bottom: var(--space-8);
+}
+
+.page-header p {
+  max-width: 40rem;
+  color: #555760;
+}
+
+.filters {
+  display: grid;
+  gap: var(--space-4);
+  align-items: end;
+  margin-bottom: var(--space-8);
+  padding: var(--space-6);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+@media (min-width: 48rem) {
+  .filters {
+    grid-template-columns: 2fr 1.2fr auto auto;
+  }
+}
+
+.catalog__results-title {
+  margin-bottom: var(--space-2);
+  font-size: 1.25rem;
+}
+
+.catalog__results-title:focus {
+  outline: none;
+}
+
+.catalog__count {
+  margin: 0 0 var(--space-4);
+  color: #555760;
+}
+
+/* ---------- Paginação ---------- */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+.pagination__pages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pagination__page {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  background: var(--color-white);
+  border: 1.5px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-chocolate);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pagination__page:hover {
+  border-color: var(--color-orange);
+}
+
+.pagination__page.is-current {
+  background: var(--color-chocolate);
+  border-color: var(--color-chocolate);
+  color: var(--color-cream);
+}
+
+.pagination .btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

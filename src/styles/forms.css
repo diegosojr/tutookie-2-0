@@ -1,0 +1,60 @@
+/* FORMULÁRIOS — campos, rótulos, dicas e mensagens de erro. */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.field label {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-chocolate);
+}
+
+.field input:not([type='checkbox']),
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.6rem 0.9rem;
+  font: inherit;
+  color: var(--color-text);
+  background: var(--color-white);
+  border: 1.5px solid #8a7a6a;
+  border-radius: var(--radius-sm);
+}
+
+.field textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+/* Campo com caixinha de marcação (checkbox) */
+.field--check {
+  flex-direction: row;
+  align-items: center;
+}
+
+.field--check input {
+  width: 1.375rem;
+  height: 1.375rem;
+  accent-color: var(--color-chocolate);
+}
+
+.field__hint {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #555760;
+}
+
+.field__error {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #8c1d18;
+}
+
+.field [aria-invalid='true'] {
+  border-color: #b3261e;
+}
