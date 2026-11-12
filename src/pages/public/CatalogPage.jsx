@@ -1,8 +1,21 @@
+import { useEffect, useState } from 'react'
+import { listProducts } from '../../services/productService.js'
+
 function CatalogPage() {
+  const [total, setTotal] = useState(null)
+
+  useEffect(() => {
+    listProducts().then((products) => setTotal(products.length))
+  }, [])
+
   return (
     <section>
       <h1>Catálogo de produtos</h1>
-      <p>Aqui ficará a listagem com busca, filtros e paginação.</p>
+      <p>
+        {total === null
+          ? 'Carregando...'
+          : `Teste do serviço: ${total} produtos carregados.`}
+      </p>
     </section>
   )
 }
