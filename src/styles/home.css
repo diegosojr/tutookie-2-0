@@ -1,0 +1,105 @@
+/* PÁGINA INICIAL — abertura (hero) e cartões de categoria. */
+
+.hero {
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.hero__eyebrow {
+  margin: 0 0 var(--space-3);
+  color: var(--color-orange-strong);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero__text p {
+  max-width: 36rem;
+  font-size: 1.125rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.hero__banner {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-gray-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.hero__banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__banner-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  height: 100%;
+  padding: var(--space-6);
+  text-align: center;
+  color: #555760;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.hero__banner-placeholder p {
+  margin: 0;
+  font-size: 0.9375rem;
+}
+
+.hero__banner-placeholder strong {
+  color: var(--color-chocolate);
+}
+
+@media (min-width: 48rem) {
+  .hero {
+    grid-template-columns: 1fr 1.1fr;
+    gap: var(--space-12);
+  }
+}
+
+/* ---------- Cartões de categoria ---------- */
+.category-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  height: 100%;
+  padding: var(--space-6);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-chocolate);
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.category-card:hover {
+  border-color: var(--color-orange);
+  box-shadow: var(--shadow-sm);
+}
+
+.category-card__name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.category-card__desc {
+  color: #555760;
+  font-size: 0.9375rem;
+}
