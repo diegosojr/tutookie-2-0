@@ -3,13 +3,18 @@ import { readSettings } from '../services/settingsService.js'
 
 function Footer() {
   const [logo] = useState(() => readSettings().logo)
+  const [failed, setFailed] = useState(false)
 
   return (
     <footer className="site-footer">
       <div className="container">
-        {logo ? (
+        {logo && !failed ? (
           <div className="site-footer__logo">
-            <img src={logo} alt="Tutookie Cookies" />
+            <img
+              src={logo}
+              alt="Tutookie Cookies"
+              onError={() => setFailed(true)}
+            />
           </div>
         ) : (
           <p className="site-footer__brand">Tutookie Cookies</p>

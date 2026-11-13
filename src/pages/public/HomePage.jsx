@@ -1,16 +1,16 @@
 import { Link } from 'react-router'
 import { useAsyncData } from '../../hooks/useAsyncData.js'
 import { listProducts, listCategories } from '../../services/productService.js'
-import { getSettings } from '../../services/settingsService.js'
+import { readSettings } from '../../services/settingsService.js'
 import ProductCard from '../../components/ProductCard.jsx'
 import StatusMessage from '../../components/StatusMessage.jsx'
+import HeroBanner from '../../components/HeroBanner.jsx'
 
 function HomePage() {
   const products = useAsyncData(listProducts)
   const categories = useAsyncData(listCategories)
-  const settings = useAsyncData(getSettings)
 
-  const banner = settings.data?.banner
+  const banner = readSettings().banner
 
   // Destaques: produtos disponíveis que têm etiqueta (máximo de 4)
   const featured = products.data
@@ -37,18 +37,7 @@ function HomePage() {
           </div>
         </div>
 
-        <div className="hero__banner">
-          {banner ? (
-            <img src={banner} alt="Banner promocional da Tutookie" />
-          ) : (
-            <div className="hero__banner-placeholder">
-              <p>
-                <strong>Espaço do banner promocional</strong>
-              </p>
-              <p>A imagem será enviada pelo painel administrativo.</p>
-            </div>
-          )}
-        </div>
+        <HeroBanner src={banner} />
       </section>
 
       <section className="section" aria-labelledby="destaques-title">

@@ -1,40 +1,64 @@
 // CONFIGURAÇÕES DA LOJA (logomarca, banner e ícone da aba).
-// Os valores ficam vazios até o administrador enviar as imagens pelo painel.
-// Assim como os produtos, isso usa localStorage (não é um banco de dados real).
+// Valores padrão: imagens que ficam dentro do projeto (public/images).
+// Valores personalizados: enviados pelo painel admin e salvos no
+// localStorage (valem só neste navegador e têm prioridade sobre os padrão).
 
 const SETTINGS_KEY = 'tutookie:settings'
 
-const defaultSettings = {
-  logo: '', // logomarca (cabeçalho e rodapé)
-  banner: '', // banner da página inicial
-  favicon: '', // ícone da aba do navegador
+export const defaultSettings = {
+  logo: '/images/logo.png',
+  banner: '/images/banner.jpg',
+  favicon: '/images/mascote.png',
 }
 
-// Leitura imediata (síncrona). Útil para mostrar a logomarca já na
-// primeira renderização, sem "piscar" o texto antes da imagem.
-export function readSettings() {
+function readStored() {
   try {
     const saved = JSON.parse(localStorage.getItem(SETTINGS_KEY))
-    return { ...defaultSettings, ...saved }
+    return saved && typeof saved === 'object' ? saved : {}
   } catch {
-    return { ...defaultSettings }
+    return {}
   }
+}
+
+// Só o que foi enviado pelo painel (usado para saber o que é personalizado)
+export function readCustomSettings() {
+  return readStored()
+}
+
+// Valores finais: personalizado, se existir; senão, o padrão do projeto.
+// Leitura imediata (síncrona) para não "piscar" na primeira renderização.
+export function readSettings() {
+  const stored = readStored()
+  const result = { ...defaultSettings }
+
+  for (const key of Object.keys(defaultSettings)) {
+    if (stored[key]) result[key] = stored[key]
+  }
+
+  return result
 }
 
 export async function getSettings() {
   return readSettings()
 }
 
+// Valor preenchido = salva a imagem personalizada.
+// Valor vazio = apaga a personalizada (volta para a imagem padrão).
 export async function saveSettings(changes) {
-  const merged = { ...readSettings(), ...changes }
+  const stored = readStored()
+
+  for (const [key, value] of Object.entries(changes)) {
+    if (value) stored[key] = value
+    else delete stored[key]
+  }
 
   try {
-    localStorage.setItem(SETTINGS_KEY, JSON.stringify(merged))
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify(stored))
   } catch {
     throw new Error(
       'Não foi possível salvar: o espaço de armazenamento do navegador está cheio.',
     )
   }
 
-  return merged
+  return readSettings()
 }

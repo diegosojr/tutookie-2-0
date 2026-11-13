@@ -1,12 +1,20 @@
 import { useState } from 'react'
 import { readSettings } from '../services/settingsService.js'
 
-// Mostra a logomarca enviada pelo admin. Sem logomarca, mostra o texto.
+// Mostra a logomarca. Se a imagem não existir, mostra o texto.
 function BrandLogo() {
   const [logo] = useState(() => readSettings().logo)
+  const [failed, setFailed] = useState(false)
 
-  if (logo) {
-    return <img className="brand-logo" src={logo} alt="Tutookie Cookies" />
+  if (logo && !failed) {
+    return (
+      <img
+        className="brand-logo"
+        src={logo}
+        alt="Tutookie Cookies"
+        onError={() => setFailed(true)}
+      />
+    )
   }
 
   return <span className="brand-text">Tutookie</span>
