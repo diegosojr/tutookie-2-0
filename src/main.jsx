@@ -15,6 +15,7 @@ import './styles/auth.css'
 import './styles/admin.css'
 import './styles/product-form.css'
 import './styles/store.css'
+import './styles/category-nav.css'
 import { AuthProvider } from './contexts/AuthProvider.jsx'
 import App from './App.jsx'
 

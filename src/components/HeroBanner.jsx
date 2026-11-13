@@ -1,13 +1,13 @@
 import { useState } from 'react'
 
-// Banner da página inicial. Se não houver imagem (ou ela não carregar),
-// mostra um espaço reservado.
+// Banner da página inicial, de uma ponta à outra da tela.
+// Se não houver imagem (ou ela não carregar), mostra um espaço reservado.
 function HeroBanner({ src }) {
   const [failedSrc, setFailedSrc] = useState('')
 
   if (src && failedSrc !== src) {
     return (
-      <div className="hero__banner">
+      <div className="home-banner">
         <img
           src={src}
           alt="Banner promocional da Tutookie"
@@ -18,8 +18,8 @@ function HeroBanner({ src }) {
   }
 
   return (
-    <div className="hero__banner">
-      <div className="hero__banner-placeholder">
+    <div className="home-banner">
+      <div className="home-banner__placeholder">
         <p>
           <strong>Espaço do banner promocional</strong>
         </p>

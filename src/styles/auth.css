@@ -70,3 +70,42 @@
   padding: 0.3rem 1rem;
   font-size: 0.875rem;
 }
+
+/* ---------- Login simplificado ---------- */
+.auth-card__title {
+  text-align: center;
+  font-size: clamp(2.25rem, 7vw, 3.25rem);
+}
+
+.auth-card__lead {
+  text-align: center;
+  color: #555760;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-6) 0 var(--space-4);
+  color: #555760;
+  font-size: 0.9375rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.auth-card__note {
+  margin: var(--space-2) 0 0;
+  text-align: center;
+  color: #555760;
+  font-size: 0.875rem;
+}

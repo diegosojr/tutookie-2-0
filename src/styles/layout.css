@@ -1,39 +1,22 @@
 /* LAYOUT — cabeçalho, barra inferior (mobile), conteúdo e rodapé. */
 
-/* ---------- Cabeçalho ---------- */
+/* ---------- Cabeçalho (somente tablet e computador) ---------- */
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: var(--color-cream);
-  border-bottom: 1px solid var(--color-border);
+  display: none;
 }
 
 .site-header__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
-  min-height: var(--header-height);
-}
-
-/* Espaço reservado da logomarca (será trocado pelo arquivo original) */
-.brand {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-chocolate);
-  text-decoration: none;
-}
-
-/* Menu do topo: escondido no celular */
-.main-nav {
-  display: none;
+  justify-content: center;
+  min-height: 3.5rem;
 }
 
 .main-nav ul {
   display: flex;
-  gap: var(--space-6);
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-8);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -132,8 +115,12 @@ body {
 
 /* ---------- Telas maiores (tablet e computador) ---------- */
 @media (min-width: 48rem) {
-  .main-nav {
+  .site-header {
     display: block;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--color-cream);
   }
 
   .tabbar {

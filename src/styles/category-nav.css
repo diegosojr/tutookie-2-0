@@ -1,0 +1,57 @@
+/* BARRA DE CATEGORIAS — faixa centralizada abaixo do menu principal. */
+
+.category-nav {
+  background: var(--color-cream);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.category-nav--loading {
+  min-height: 4rem;
+}
+
+/* No celular a lista rola para o lado; no computador fica centralizada */
+.category-nav__list {
+  display: flex;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-3) 0.5rem;
+  overflow-x: auto;
+  list-style: none;
+}
+
+.category-nav__list li:first-child {
+  margin-left: auto;
+}
+
+.category-nav__list li:last-child {
+  margin-right: auto;
+}
+
+.category-nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.35rem 1rem;
+  background: var(--color-white);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-chocolate);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.category-nav__link:hover {
+  border-color: var(--color-orange);
+}
+
+.category-nav__link.is-active {
+  background: var(--color-chocolate);
+  border-color: var(--color-chocolate);
+  color: var(--color-cream);
+  font-weight: 700;
+}

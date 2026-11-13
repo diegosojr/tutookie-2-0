@@ -1,16 +1,11 @@
 import { Link } from 'react-router'
 import { useAsyncData } from '../../hooks/useAsyncData.js'
-import { listProducts, listCategories } from '../../services/productService.js'
-import { readSettings } from '../../services/settingsService.js'
+import { listProducts } from '../../services/productService.js'
 import ProductCard from '../../components/ProductCard.jsx'
 import StatusMessage from '../../components/StatusMessage.jsx'
-import HeroBanner from '../../components/HeroBanner.jsx'
 
 function HomePage() {
   const products = useAsyncData(listProducts)
-  const categories = useAsyncData(listCategories)
-
-  const banner = readSettings().banner
 
   // Destaques: produtos disponíveis que têm etiqueta (máximo de 4)
   const featured = products.data
@@ -19,25 +14,19 @@ function HomePage() {
 
   return (
     <>
-      <section className="hero" aria-labelledby="hero-title">
-        <div className="hero__text">
-          <p className="hero__eyebrow">Campina Grande — PB</p>
-          <h1 id="hero-title">Tutookie Cookies</h1>
-          <p>
-            Cookies artesanais de Campina Grande, na Paraíba. Conheça os
-            sabores da casa.
-          </p>
-          <div className="hero__actions">
-            <Link to="/produtos" className="btn">
-              Ver produtos
-            </Link>
-            <Link to="/promocoes" className="btn btn--secondary">
-              Ver promoções
-            </Link>
-          </div>
+      {/* O banner fica no layout (largura total). Aqui, a apresentação. */}
+      <section className="intro" aria-labelledby="intro-title">
+        <p className="intro__eyebrow">Campina Grande — PB</p>
+        <h1 id="intro-title">Tutookie Cookies</h1>
+        <p className="intro__tagline">Cookies artesanais</p>
+        <div className="intro__actions">
+          <Link to="/produtos" className="btn btn--small">
+            Ver produtos
+          </Link>
+          <Link to="/promocoes" className="btn btn--secondary btn--small">
+            Ver promoções
+          </Link>
         </div>
-
-        <HeroBanner src={banner} />
       </section>
 
       <section className="section" aria-labelledby="destaques-title">
@@ -72,43 +61,6 @@ function HomePage() {
             {featured.map((product) => (
               <li key={product.id}>
                 <ProductCard product={product} />
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-
-      <section className="section" aria-labelledby="categorias-title">
-        <div className="section__header">
-          <h2 id="categorias-title">Categorias</h2>
-        </div>
-
-        {categories.status === 'loading' && (
-          <StatusMessage type="loading" title="Carregando categorias..." />
-        )}
-
-        {categories.status === 'error' && (
-          <StatusMessage
-            type="error"
-            title="Não foi possível carregar as categorias"
-            message={categories.error.message}
-            onRetry={categories.reload}
-          />
-        )}
-
-        {categories.status === 'success' && (
-          <ul className="grid grid--categories">
-            {categories.data.map((category) => (
-              <li key={category.id}>
-                <Link
-                  className="category-card"
-                  to={`/produtos?categoria=${category.id}`}
-                >
-                  <span className="category-card__name">{category.nome}</span>
-                  <span className="category-card__desc">
-                    {category.descricao}
-                  </span>
-                </Link>
               </li>
             ))}
           </ul>

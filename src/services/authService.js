@@ -1,8 +1,8 @@
 // AUTENTICAÇÃO SIMULADA (somente para demonstração acadêmica).
 //
-// ATENÇÃO: este login NÃO é seguro. As senhas ficam visíveis no código que
-// roda no navegador. Em um sistema real, o login será feito por uma API
-// (backend). As credenciais abaixo são FICTÍCIAS.
+// ATENÇÃO: este login NÃO é seguro. As senhas ficam no código que roda no
+// navegador e qualquer pessoa pode lê-las. Em um sistema real, o login será
+// feito por uma API (backend). As credenciais abaixo são FICTÍCIAS.
 
 const SESSION_KEY = 'tutookie:session'
 const FAKE_DELAY_MS = 500
@@ -25,12 +25,9 @@ const demoUsers = [
   },
 ]
 
-// Credenciais exibidas na tela de login (claramente fictícias)
-export const demoCredentials = demoUsers.map((user) => ({
-  perfil: user.perfil,
-  email: user.email,
-  senha: user.senha,
-}))
+function wait(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
 
 // Remove a senha antes de guardar ou compartilhar o usuário
 function toPublicUser(user) {
@@ -40,6 +37,12 @@ function toPublicUser(user) {
     email: user.email,
     perfil: user.perfil,
   }
+}
+
+function saveSession(user) {
+  const publicUser = toPublicUser(user)
+  localStorage.setItem(SESSION_KEY, JSON.stringify(publicUser))
+  return publicUser
 }
 
 // Recupera a sessão salva (para continuar logado ao atualizar a página).
@@ -53,8 +56,9 @@ export function getStoredUser() {
   }
 }
 
+// Login com e-mail e senha.
 export async function login(email, password) {
-  await new Promise((resolve) => setTimeout(resolve, FAKE_DELAY_MS))
+  await wait(FAKE_DELAY_MS)
 
   const found = demoUsers.find(
     (user) =>
@@ -66,9 +70,15 @@ export async function login(email, password) {
     throw new Error('E-mail ou senha incorretos.')
   }
 
-  const publicUser = toPublicUser(found)
-  localStorage.setItem(SESSION_KEY, JSON.stringify(publicUser))
-  return publicUser
+  return saveSession(found)
+}
+
+// Acesso rápido como cliente de demonstração (sem senha).
+export async function loginAsCustomer() {
+  await wait(FAKE_DELAY_MS)
+
+  const customer = demoUsers.find((user) => user.perfil === 'cliente')
+  return saveSession(customer)
 }
 
 export function logout() {

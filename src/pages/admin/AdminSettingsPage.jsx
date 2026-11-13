@@ -157,10 +157,10 @@ function AdminSettingsPage() {
       <ImageSetting
         id="banner"
         title="Banner da página inicial"
-        description="Tamanho recomendado: cerca de 1600 × 500 px. Em telas estreitas as bordas podem ser cortadas, então deixe o importante no centro."
+        description="Tamanho recomendado: 1920 × 640 px. Em telas estreitas as bordas podem ser cortadas, então deixe o importante no centro."
         value={settings.banner}
         isCustom={Boolean(custom.banner)}
-        processOptions={{ maxSize: 1600, format: 'jpeg', quality: 0.8 }}
+        processOptions={{ maxSize: 1920, format: 'jpeg', quality: 0.8 }}
         previewClass="image-setting__preview--banner"
         onChange={(value) => update('banner', value)}
       />

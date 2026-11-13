@@ -13,6 +13,12 @@ export function AuthProvider({ children }) {
     return loggedUser
   }, [])
 
+  const loginAsCustomer = useCallback(async () => {
+    const loggedUser = await authService.loginAsCustomer()
+    setUser(loggedUser)
+    return loggedUser
+  }, [])
+
   const logout = useCallback(() => {
     authService.logout()
     setUser(null)
@@ -24,9 +30,10 @@ export function AuthProvider({ children }) {
       isAuthenticated: Boolean(user),
       isAdmin: user?.perfil === 'admin',
       login,
+      loginAsCustomer,
       logout,
     }),
-    [user, login, logout],
+    [user, login, loginAsCustomer, logout],
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router'
 import { useAuth } from '../../hooks/useAuth.js'
-import { demoCredentials } from '../../services/authService.js'
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -25,7 +24,7 @@ function validate({ email, password }) {
 }
 
 function LoginPage() {
-  const { user, login, logout } = useAuth()
+  const { user, login, loginAsCustomer, logout } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
   const emailRef = useRef(null)
@@ -69,13 +68,6 @@ function LoginPage() {
     setSubmitError('')
   }
 
-  function fillDemo(perfil) {
-    const credentials = demoCredentials.find((c) => c.perfil === perfil)
-    setValues({ email: credentials.email, password: credentials.senha })
-    setErrors({})
-    setSubmitError('')
-  }
-
   async function handleSubmit(event) {
     event.preventDefault()
     setSubmitError('')
@@ -106,10 +98,24 @@ function LoginPage() {
     }
   }
 
+  async function handleCustomerLogin() {
+    setSubmitError('')
+    setErrors({})
+    setSubmitting(true)
+
+    try {
+      await loginAsCustomer()
+      navigate('/', { replace: true })
+    } catch (error) {
+      setSubmitError(error.message)
+      setSubmitting(false)
+    }
+  }
+
   return (
     <section className="auth-card">
-      <h1>Entrar</h1>
-      <p>Acesse sua conta de cliente ou de administrador.</p>
+      <h1 className="auth-card__title">Faça seu login</h1>
+      <p className="auth-card__lead">Informe seu e-mail e sua senha.</p>
 
       <form className="auth-form" onSubmit={handleSubmit} noValidate>
         {submitError && (
@@ -158,37 +164,30 @@ function LoginPage() {
           )}
         </div>
 
-        <button type="submit" className="btn" disabled={submitting}>
+        <button
+          type="submit"
+          className="btn btn--block"
+          disabled={submitting}
+        >
           {submitting ? 'Entrando...' : 'Entrar'}
         </button>
       </form>
 
-      <div className="demo-box">
-        <h2>Contas de demonstração (fictícias)</h2>
-        <p>
-          Administrador: <code>admin@tutookie.test</code> / <code>admin123</code>
-        </p>
-        <p>
-          Cliente: <code>cliente@tutookie.test</code> / <code>cliente123</code>
-        </p>
-        <p>Este login é simulado e serve apenas para a apresentação.</p>
-        <div className="demo-box__buttons">
-          <button
-            type="button"
-            className="btn btn--secondary btn--small"
-            onClick={() => fillDemo('admin')}
-          >
-            Preencher como administrador
-          </button>
-          <button
-            type="button"
-            className="btn btn--secondary btn--small"
-            onClick={() => fillDemo('cliente')}
-          >
-            Preencher como cliente
-          </button>
-        </div>
-      </div>
+      <p className="auth-divider">
+        <span>ou</span>
+      </p>
+
+      <button
+        type="button"
+        className="btn btn--secondary btn--block"
+        onClick={handleCustomerLogin}
+        disabled={submitting}
+      >
+        Entrar como cliente
+      </button>
+      <p className="auth-card__note">
+        Acesso rápido de demonstração, sem cadastro.
+      </p>
     </section>
   )
 }

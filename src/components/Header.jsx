@@ -1,17 +1,14 @@
-import { Link, NavLink } from 'react-router'
+import { NavLink } from 'react-router'
 import { useAuth } from '../hooks/useAuth.js'
-import BrandLogo from './BrandLogo.jsx'
 
+// Cabeçalho (somente tablet e computador): menu centralizado.
+// No celular, o menu fica na barra inferior (MobileTabBar).
 function Header() {
   const { user } = useAuth()
 
   return (
     <header className="site-header">
       <div className="container site-header__inner">
-        <Link to="/" className="brand" aria-label="Tutookie, página inicial">
-          <BrandLogo />
-        </Link>
-
         <nav className="main-nav" aria-label="Navegação principal">
           <ul>
             <li>
