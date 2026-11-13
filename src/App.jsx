@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router'
+import { useRouteTitle } from './hooks/useRouteTitle.js'
 import PublicLayout from './layouts/PublicLayout.jsx'
 import AdminLayout from './layouts/AdminLayout.jsx'
 import ProtectedRoute from './routes/ProtectedRoute.jsx'
@@ -14,6 +15,8 @@ import AdminProductsPage from './pages/admin/AdminProductsPage.jsx'
 import AdminProductFormPage from './pages/admin/AdminProductFormPage.jsx'
 
 function App() {
+  useRouteTitle()
+
   return (
     <Routes>
       {/* Rotas públicas: compartilham cabeçalho e rodapé da loja */}
