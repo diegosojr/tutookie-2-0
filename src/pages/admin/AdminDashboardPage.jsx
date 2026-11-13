@@ -61,7 +61,7 @@ function AdminDashboardPage() {
     products.status === 'loading' || categories.status === 'loading'
   const hasError = products.status === 'error' || categories.status === 'error'
 
-  let stats = null
+  let stats
 
   if (isLoading) {
     stats = <StatusMessage type="loading" title="Carregando indicadores..." />

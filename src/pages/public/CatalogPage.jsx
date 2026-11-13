@@ -53,7 +53,7 @@ function CatalogPage() {
     products.status === 'loading' || categories.status === 'loading'
   const hasError = products.status === 'error' || categories.status === 'error'
 
-  let content = null
+  let content
 
   if (isLoading) {
     content = <StatusMessage type="loading" title="Carregando produtos..." />
