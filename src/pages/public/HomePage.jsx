@@ -14,10 +14,13 @@ function HomePage() {
 
   return (
     <>
-      {/* O banner fica no layout (largura total). Aqui, a apresentação. */}
+      {/* O banner fica no layout. Aqui, a apresentação da loja. */}
       <section className="intro" aria-labelledby="intro-title">
-        <p className="intro__eyebrow">Campina Grande — PB</p>
-        <h1 id="intro-title">Tutookie Cookies</h1>
+        {/* Título principal da página, visível apenas para leitores de tela */}
+        <h1 id="intro-title" className="visually-hidden">
+          Tutookie Cookies
+        </h1>
+        <p className="intro__eyebrow">Campina Grande — Paraíba</p>
         <p className="intro__tagline">Cookies artesanais</p>
         <div className="intro__actions">
           <Link to="/produtos" className="btn btn--small">
