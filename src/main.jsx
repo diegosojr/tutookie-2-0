@@ -13,6 +13,7 @@ import './styles/catalog.css'
 import './styles/product.css'
 import './styles/auth.css'
 import './styles/admin.css'
+import './styles/product-form.css'
 import { AuthProvider } from './contexts/AuthProvider.jsx'
 import App from './App.jsx'
 

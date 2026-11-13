@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useLocation } from 'react-router'
 import { useAsyncData } from '../../hooks/useAsyncData.js'
 import {
   listProducts,
@@ -17,6 +17,7 @@ const PAGE_SIZE = 6
 const NO_FILTERS = { q: '', categoria: '', disponibilidade: '' }
 
 function AdminProductsPage() {
+  const location = useLocation()
   const products = useAsyncData(listProducts)
   const categories = useAsyncData(listCategories)
 
@@ -24,8 +25,7 @@ function AdminProductsPage() {
   const [page, setPage] = useState(1)
   const [toDelete, setToDelete] = useState(null)
   const [deleting, setDeleting] = useState(false)
-  const [feedback, setFeedback] = useState(null)
-
+  const [feedback, setFeedback] = useState(() => location.state?.feedback ?? null)
   function changeFilter(name, value) {
     setFilters((current) => ({ ...current, [name]: value }))
     setPage(1)

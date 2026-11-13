@@ -1,0 +1,60 @@
+/* FORMULÁRIO DE PRODUTO (painel administrativo) */
+
+.form-page {
+  max-width: 44rem;
+}
+
+.product-form {
+  display: grid;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.product-form > .field__hint:first-child {
+  margin-bottom: calc(var(--space-2) * -1);
+}
+
+.product-form .form-alert {
+  margin: 0;
+}
+
+.form-row {
+  display: grid;
+  gap: var(--space-6);
+}
+
+@media (min-width: 40rem) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.field input[type='file'] {
+  padding: var(--space-2);
+  background: var(--color-cream);
+}
+
+.image-preview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.image-preview img {
+  width: 10rem;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
