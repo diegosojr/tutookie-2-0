@@ -13,6 +13,7 @@ const TITLES = [
   { match: /^\/login$/, title: 'Entrar' },
   { match: /^\/acesso-negado$/, title: 'Acesso negado' },
   { match: /^\/admin$/, title: 'Dashboard · Admin' },
+  { match: /^\/admin\/configuracoes$/, title: 'Configurações · Admin' },
   { match: /^\/admin\/produtos$/, title: 'Produtos · Admin' },
   { match: /^\/admin\/produtos\/novo$/, title: 'Novo produto · Admin' },
   {

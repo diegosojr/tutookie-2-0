@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router'
 import { useAuth } from '../hooks/useAuth.js'
+import BrandLogo from './BrandLogo.jsx'
 
 function Header() {
   const { user } = useAuth()
@@ -7,9 +8,8 @@ function Header() {
   return (
     <header className="site-header">
       <div className="container site-header__inner">
-        {/* Espaço reservado: a logomarca original entrará aqui */}
         <Link to="/" className="brand" aria-label="Tutookie, página inicial">
-          Tutookie
+          <BrandLogo />
         </Link>
 
         <nav className="main-nav" aria-label="Navegação principal">

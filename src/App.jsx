@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router'
 import { useRouteTitle } from './hooks/useRouteTitle.js'
+import { useFavicon } from './hooks/useFavicon.js'
 import PublicLayout from './layouts/PublicLayout.jsx'
 import AdminLayout from './layouts/AdminLayout.jsx'
 import ProtectedRoute from './routes/ProtectedRoute.jsx'
@@ -13,9 +14,11 @@ import NotFoundPage from './pages/public/NotFoundPage.jsx'
 import AdminDashboardPage from './pages/admin/AdminDashboardPage.jsx'
 import AdminProductsPage from './pages/admin/AdminProductsPage.jsx'
 import AdminProductFormPage from './pages/admin/AdminProductFormPage.jsx'
+import AdminSettingsPage from './pages/admin/AdminSettingsPage.jsx'
 
 function App() {
   useRouteTitle()
+  useFavicon()
 
   return (
     <Routes>
@@ -40,6 +43,7 @@ function App() {
             path="/admin/produtos/:id/editar"
             element={<AdminProductFormPage />}
           />
+          <Route path="/admin/configuracoes" element={<AdminSettingsPage />} />
         </Route>
       </Route>
     </Routes>
